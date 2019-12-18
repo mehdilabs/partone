@@ -11,14 +11,14 @@ class array_sum extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'run:array_sum { array : an array to be summed up}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'array_sum - Calculates the sum of the values of the array';
 
     /**
      * Create a new command instance.
@@ -37,6 +37,8 @@ class array_sum extends Command
      */
     public function handle()
     {
-        //
+        if (is_null(json_decode($this->argument('array'))))
+            return $this->error('Invalid parameter');
+        $this->info(collect(\Arr::flatten(json_decode($this->argument('array'))))->sum());
     }
 }
