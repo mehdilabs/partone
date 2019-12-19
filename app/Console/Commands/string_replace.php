@@ -46,11 +46,14 @@ class string_replace extends Command
         $indexes = $matches[1];
 
         //Sort
-        dump(array_flip($indexes));
         $ordered_args = array_replace(array_flip($indexes), $this->argument('args'));
-        dump($patterns, $ordered_args);
 
         //Replace
-        $this->line( str_replace($patterns, $ordered_args, $this->argument('pattern')) );
+        try {
+            $this->line(strtr($this->argument('pattern'), array_combine($patterns, $ordered_args)));
+        } catch (\Exception $th) {
+            // throw $th;
+            $this->error(':/');
+        }
     }
 }
