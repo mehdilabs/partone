@@ -20,7 +20,9 @@ First: string with elements to replace with its arguments, your have template pa
 exp: '{1}_{0}'
 Second: list of arguments, exp: {1} {0}
 
-Example:
+User is not limited by number of arguments.
+
+Examples:
 
 ```php
 php artisan run:string_replace '{1}_{0}' {1} {0} -> output: {0}_{1}
