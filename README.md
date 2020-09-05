@@ -25,4 +25,6 @@ Example:
 ```php
 php artisan run:string_replace '{1}_{0}' {1} {0} -> output: {0}_{1}
 php artisan run:string_replace '{1}_{0}' hello world -> output: world_hello
+php artisan run:string_replace '{1}_hello_{0}' {0} test -> output: test_hello_{0}
+php artisan run:string_replace '{1}_{2}_{0}' {0} test {five} tree -> output: test_{five}_{0}
 ```
